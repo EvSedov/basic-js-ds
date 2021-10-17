@@ -1,46 +1,69 @@
 const { NotImplementedError } = require('../extensions/index.js');
 
-// const { Node } = require('../extensions/list-tree.js');
+const { Node } = require('../extensions/list-tree.js');
 
 /**
 * Implement simple binary search tree according to task description
 * using Node from extensions
 */
 module.exports = class BinarySearchTree {
+  constructor() {
+    this.data = null;
+    this.left = null;
+    this.right = null;
+  }
 
   root() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    return this.data;
   }
 
-  add(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  add(data) {
+    let curValue = this.data;
+    if (curValue === null) {
+      curValue = new Node(data);
+      this.data = curValue.root;
+      this.left = curValue.left;
+      this.right = curValue.right;
+    } else {
+      if (curValue > data) {
+        curValue = this.left;
+        if (curValue === null) {
+          curValue = new Node(data);
+          this.left = curValue;
+        }
+      } else if (curValue < data) {
+        curValue = this.right;
+        if (curValue === null) {
+          curValue = new Node(data);
+          this.right = curValue;
+        }
+      }
+    }
+
   }
 
-  has(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  has(data) {
+   return this;
   }
 
-  find(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  find(data) {
+    return this;
   }
 
-  remove(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  remove(data) {
+    return this;
   }
 
   min() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    let curNode = this.data;
+    while (curNode.left !== null) {
+      curNode = curNode.left;
+    }
+    return curNode.root;
   }
 
   max() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    return this;
   }
 
 }
